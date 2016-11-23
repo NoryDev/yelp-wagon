@@ -1,3 +1,9 @@
+<% content_for(:title) do %>
+  <%= @restaurant.name %> is on Yelp!
+<% end %>
+
+
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -27,4 +33,15 @@
 </ul>
 
 <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
-<%= link_to 'Back', restaurants_path %>
+<%= link_to restaurants_path do %>
+  <i class="fa fa-arrow-left"></i>
+  <%= image_tag "logo.png" %>
+<% end %>
+
+<% content_for(:after_js) do %>
+<script>
+  $(document).ready(function(){
+    alert("<%= @restaurant.name %>");
+  })
+</script>
+<% end %>

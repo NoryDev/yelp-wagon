@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>YelpWagon</title>
+    <title><%= content_for(:title).present? ? content_for(:title) : "Yelp" %></title>
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <!-- Navbar -->
+    <%= render "shared/navbar" %>
     <%= yield %>
+    <!-- Footer -->
+    <%= render "shared/footer" %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= yield(:after_js) %>
   </body>
 </html>
